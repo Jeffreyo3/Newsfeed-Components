@@ -155,22 +155,21 @@ function createArticles(newsData) {
   articleFirstPar.textContent = newsData.firstParagraph;
   articleSecondPar.textContent = newsData.secondParagraph;
   articleThirdPar.textContent = newsData.thirdParagraph;
+  articleExpand.textContent = '\u25bc';
 
   // Apply Styles
   article.classList.add('article');
-  articleTitle.classList.add('.article', 'h2');
-  articleDate.classList.add('.date');
-  articleExpand.classList.add('.expandButton');
+  articleTitle.classList.add('h2');
+  articleDate.classList.add('date');
+  articleExpand.classList.add('expandButton');
   
-  // articleButton.addEventListener('click', (e) => {
-  //   expandButton.classList.toggle('hide-btn');
-  //   buttonClose.classList.toggle('hide-btn');
-  //   panelContent.classList.toggle('article-open');
-  // })
+
+  articleExpand.addEventListener('click', event => {
+    article.classList.toggle('article-open');
+  });
 
   return article;
 }
-
 
 
 const articles = document.querySelector('.articles');
