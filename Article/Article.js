@@ -85,6 +85,24 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  // New Article
+  {
+    title: 'Volunteer Projects in 2020',
+    date: 'Jan 19th, 2020',
+    firstParagraph: `Tú me das las cosas que yo quiero cuando menos me lo espero y
+          Tú me das el aire que respiro
+          Tú serás lo que tanto buscaba y yo creía que no existía
+          Tu vendrás robándome la vida pa' fundirla con la tuya`,
+
+    secondParagraph: `Y que será de mi cuando en tus brazos yo descubra
+          Que tú serás el cielo que jamás podre tocar
+          Es imposible ya lo sé, abrázame`,
+    
+    thirdParagraph: `Tú me das un golpe de energía cuando estoy sin batería
+          Tú me das la vida en un instante
+          Tu serás la historia más bonita la que nunca se te olvida
+          Tú vendrás entregando tu vida para hacerte con la mía`
   }
 ];
 
@@ -112,3 +130,50 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+function createArticles(newsData) {
+  // Create Elements
+  const article = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const articleDate = document.createElement('p');
+  const articleFirstPar = document.createElement('p');
+  const articleSecondPar = document.createElement('p');
+  const articleThirdPar = document.createElement('p');
+  const articleExpand = document.createElement('span');
+
+  // Create Structure 
+  article.appendChild(articleTitle);
+  article.appendChild(articleDate);
+  article.appendChild(articleFirstPar);
+  article.appendChild(articleSecondPar);
+  article.appendChild(articleThirdPar);
+  article.appendChild(articleExpand);
+
+  // Set Content 
+  articleTitle.textContent = newsData.title;
+  articleDate.textContent = newsData.date;
+  articleFirstPar.textContent = newsData.firstParagraph;
+  articleSecondPar.textContent = newsData.secondParagraph;
+  articleThirdPar.textContent = newsData.thirdParagraph;
+  articleExpand.textContent = '\u25bc';
+
+  // Apply Styles
+  article.classList.add('article');
+  articleTitle.classList.add('h2');
+  articleDate.classList.add('date');
+  articleExpand.classList.add('expandButton');
+  
+
+  articleExpand.addEventListener('click', event => {
+    article.classList.toggle('article-open');
+  });
+
+  return article;
+}
+
+
+const articles = document.querySelector('.articles');
+
+data.forEach(data => {
+  articles.appendChild(createArticles(data));
+});
